@@ -1,4 +1,4 @@
-package edu.handong.analysis.utils;
+package edu.handong.analysise.utils;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,32 +7,33 @@ import java.io.PrintWriter;
 
 public class Utils {
 	
-	static ArrayList<String> getLines(String file, boolean removeHeader){	
-		ArrayList<String> temp;
-		temp = null;
+	public static ArrayList<String> getLines(String file, boolean removeHeader){	
+		ArrayList<String> temp = new ArrayList<String>();
 		Scanner inputStream = null;
 		try {
+			//file이 존재하나 체크
+			File fileCheck = new File(file);
+			if(fileCheck.exists() == false) {
+				throw new NotEnoughArgumentException("The file path does not exist. Please check your CLI argument!");
+			}
 			inputStream = new Scanner(new File(file));
+			
+			while (inputStream.hasNextLine ()) {
+				String line = inputStream.nextLine();
+				temp.add(line);		
+			}
+			if(removeHeader == true) temp.remove(0);
 		}  catch (FileNotFoundException e) {
 			System.out.println ("Error opening the file " + file);
 			System.exit (0);
+		}catch(NotEnoughArgumentException e) {
+			System.out.println(e);
 		}
-		while (inputStream.hasNextLine ()) {
-			String line = inputStream.nextLine ();
-			if(removeHeader == true){
-				if(line.split(",")[1].trim() == "StudentID") {
-					continue;
-				}else {
-					temp.add(line);				
-				}				
-			}else {
-				temp.add(line);
-			}
-		}
-		inputStream.close ();
+		inputStream.close();
 		return temp;
 	}
-	static void writeAFile(ArrayList<String> lines, String targetFileName) {
+	
+	public static void writeAFile(ArrayList<String> lines, String targetFileName) {
 		PrintWriter outputStream = null;
 		try {
 			outputStream = new PrintWriter(targetFileName);
