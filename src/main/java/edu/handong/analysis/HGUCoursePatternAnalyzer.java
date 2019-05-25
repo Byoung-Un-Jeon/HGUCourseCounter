@@ -119,7 +119,7 @@ public class HGUCoursePatternAnalyzer {
 					 if(i == tempHash.get(secondKey)) {
 						 String tempSemester = Integer.toString(tempHash.get(secondKey));
 						 String tempNumcourses = Integer.toString(sortedStudents.get(key).getNumCourseInNthSementer(i));
-						 result.add(tempKey + ", " + tempTotal + ", " + tempSemester + ", " + tempNumcourses);
+						 result.add(tempKey + "," + tempTotal + "," + tempSemester + "," + tempNumcourses);
 					 }
 				 } 
 			 }
