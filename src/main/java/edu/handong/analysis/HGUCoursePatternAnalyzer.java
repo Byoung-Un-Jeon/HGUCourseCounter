@@ -113,7 +113,6 @@ public class HGUCoursePatternAnalyzer {
 				for(String resultkey : finalResult.keySet()) {
 					
 					float Rate = Math.round(((float)(result.get(resultkey) / (float)totalresult.get(resultkey))*100));
-					System.out.println(Rate);
 					
 					String tempString = resultkey.split("-")[0] + "," 
 										+resultkey.split("-")[1] + ","

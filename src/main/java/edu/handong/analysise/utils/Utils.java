@@ -28,7 +28,7 @@ public class Utils {
 			 fileReader = new FileReader(file);	
 			 csvFileParser = csvFileFormat.parse(fileReader);
 			 }catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("The file path does not exist. Please check your CLI argument!");
 		}
 		//템프에 넣어주기 위해서 이터레이터로 만들어줌
 		Iterator<CSVRecord> iter = csvFileParser.iterator();
