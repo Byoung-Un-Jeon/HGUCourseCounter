@@ -63,8 +63,10 @@ public class HGUCoursePatternAnalyzer {
 			//2번을 선택한 경우
 			else {
 				//Year,Semester,CourseCode, CourseName,TotalStudents,StudentsTaken,Rate
+				
 				HashMap<String, Integer> result = new HashMap<String,Integer>();
 				HashMap<String, Integer> totalresult = new HashMap<String,Integer>();
+				
 				ArrayList<String> linesToBeSaved = new ArrayList<String>();
 				String courseName = null;
 				
@@ -151,11 +153,11 @@ public class HGUCoursePatternAnalyzer {
 			
 			//만약 처음으로 들어오는 값이면
 			if(temp.isEmpty()&&tempyear>=start&&tempyear<=end) {
-				//스튜던트에 course와 id를 셋해준뒤 그냥 넣어준다.
 				temp.put(tempStudent.getStudentId(), tempStudent);
+				//스튜던트에 course와 id를 셋해준뒤 그냥 넣어준다.
 			} else {
 				//만약 스튜던트 아이디가 이미 있다면
-				if(temp.containsKey(tempStudent.getStudentId())) {
+				if(temp.containsKey(tempStudent.getStudentId())&&tempyear>=start&&tempyear<=end) {
 					//그 스튜던트에 코스를 추가해줍니다.
 					temp.get(tempStudent.getStudentId()).addCourse(tempCourse);
 				}else {
