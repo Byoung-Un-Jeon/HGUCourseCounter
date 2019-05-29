@@ -114,7 +114,7 @@ public class HGUCoursePatternAnalyzer {
 				
 				for(String resultkey : finalResult.keySet()) {
 					
-					float Rate = Math.round(((float)(result.get(resultkey) / (float)totalresult.get(resultkey))*100));
+					float Rate = ((float)result.get(resultkey) / (float)totalresult.get(resultkey))*100; 
 					
 					String tempString = resultkey.split("-")[0] + "," 
 										+resultkey.split("-")[1] + ","
@@ -122,7 +122,7 @@ public class HGUCoursePatternAnalyzer {
 										+courseName + ","
 										+totalresult.get(resultkey) + ","
 										+result.get(resultkey) + ","
-										+String.valueOf(Rate) + "%";
+										+String.format("%.1f", Rate) + "%";
 					linesToBeSaved.add(tempString); 
 				}
 				Utils.writeAFile(linesToBeSaved, resultPath);
